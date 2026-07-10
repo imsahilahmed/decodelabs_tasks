@@ -1,0 +1,11 @@
+product_name,platform,tone,description,temperature,top_p
+AquaFlow Bottle,linkedin,professional,"A self-cleaning UV water bottle that keeps water fresh for 24 hours.",0.3,0.9
+AquaFlow Bottle,instagram,witty,"A self-cleaning UV water bottle that keeps water fresh for 24 hours.",0.8,0.95
+AquaFlow Bottle,email,professional,"A self-cleaning UV water bottle that keeps water fresh for 24 hours.",0.4,0.9
+GlowSkin Serum,instagram,playful,"A vitamin-C serum that brightens skin in 2 weeks with visible results.",0.85,0.
+PulseBand Fitness Tracker,linkedin,professional,"A fitness wearable that tracks heart rate, sleep quality, and stress levels with 7-day battery life and real-time coaching insights.",0.3,0.9
+PulseBand Fitness Tracker,instagram,witty,"A fitness wearable that tracks heart rate, sleep quality, and stress levels with 7-day battery life and real-time coaching insights.",0.85,0.95
+BrewMaster Coffee Pods,email,professional,"Single-serve, compostable coffee pods made from 100% Arabica beans, compatible with all major pod machines.",0.4,0.9
+BrewMaster Coffee Pods,twitter,witty,"Single-serve, compostable coffee pods made from 100% Arabica beans, compatible with all major pod machines.",0.8,0.95
+NestEase Smart Thermostat,linkedin,professional,"A WiFi-connected thermostat that learns your schedule and cuts home energy bills by up to 23% in the first year.",0.3,0.9
+NestEase Smart Thermostat,instagram,playful,"A WiFi-connected thermostat that learns your schedule and cuts home energy bills by up to 23% in the first year.",0.8,0.95

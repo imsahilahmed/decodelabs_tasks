@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Synthesis Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="grid-backdrop"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">◆</span>
+    <div class="brand-text">
+      <span class="brand-title">Image Synthesis Studio</span>
+      <span class="brand-sub">Text-to-image pipeline &middot; resilient network layer &middot; asset verification</span>
+    </div>
+  </div>
+  <button class="settings-btn" id="settingsBtn" title="Engine configuration">
+    <span>⚙</span> Configuration
+  </button>
+</header>
+
+<div class="settings-panel" id="settingsPanel">
+  <div class="settings-inner">
+    <div class="settings-row">
+      <span class="settings-label">OpenAI (gpt-image)</span>
+      <span class="chip {{ 'chip-on' if has_openai else 'chip-off' }}">{{ 'Connected' if has_openai else 'Not configured' }}</span>
+    </div>
+    <div class="settings-row">
+      <span class="settings-label">Stability AI</span>
+      <span class="chip {{ 'chip-on' if has_stability else 'chip-off' }}">{{ 'Connected' if has_stability else 'Not configured' }}</span>
+    </div>
+    <p class="settings-note">Add API keys to your <code>.env</code> file to enable these engines. Pollinations requires no configuration.</p>
+  </div>
+</div>
+
+<main class="layout">
+
+  <!-- ================= LEFT: CONTROL PANEL ================= -->
+  <section class="panel controls">
+    <h2 class="panel-title">01 &mdash; Prompt Payload</h2>
+
+    <label class="field-label" for="prompt">Text description</label>
+    <textarea id="prompt" rows="4" placeholder="A lighthouse on a cliff at dawn, painted in soft gouache..."></textarea>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label" for="provider">Engine</label>
+        <select id="provider">
+          <option value="pollinations" selected>Flux (Pollinations)</option>
+          <option value="mock">Local preview (offline)</option>
+          <option value="openai">GPT Image (OpenAI)</option>
+          <option value="stability">Stable Image Core (Stability AI)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label" for="aspect">Aspect ratio</label>
+        <select id="aspect">
+          <option value="1:1">1:1 &middot; 1024x1024 &middot; square</option>
+          <option value="16:9">16:9 &middot; 1344x768 &middot; landscape</option>
+          <option value="9:16">9:16 &middot; 768x1344 &middot; vertical</option>
+        </select>
+      </div>
+    </div>
+
+    <label class="field-label" for="style">Style preset</label>
+    <select id="style">
+      <option value="none">None</option>
+      <option value="cyberpunk">Cyberpunk</option>
+      <option value="minimalism">Minimalism</option>
+      <option value="photorealistic">Photorealistic</option>
+      <option value="watercolor">Watercolor</option>
+    </select>
+
+    <button id="generateBtn" class="run-btn">
+      <span class="run-btn-label">RUN PIPELINE</span>
+      <span class="run-btn-arrow">&rarr;</span>
+    </button>
+
+    <p class="hint">The default engine requires no API key. See Configuration in the top bar to enable OpenAI or Stability AI.</p>
+  </section>
+
+  <!-- ================= CENTER: PIPELINE BLUEPRINT ================= -->
+  <section class="panel blueprint">
+    <h2 class="panel-title">02 &mdash; Pipeline Blueprint</h2>
+    <div class="stages" id="stages">
+      <div class="stage" data-stage="payload">
+        <div class="stage-dot"></div>
+        <div class="stage-body">
+          <div class="stage-name">[ PAYLOAD ] Prompt Formulation</div>
+          <div class="stage-detail">Waiting&hellip;</div>
+        </div>
+      </div>
+      <div class="stage" data-stage="network">
+        <div class="stage-dot"></div>
+        <div class="stage-body">
+          <div class="stage-name">[ NETWORK ] API Gateway</div>
+          <div class="stage-detail">Waiting&hellip;</div>
+        </div>
+      </div>
+      <div class="stage" data-stage="security">
+        <div class="stage-dot"></div>
+        <div class="stage-body">
+          <div class="stage-name">[ SECURITY ] Moderation Gates</div>
+          <div class="stage-detail">Waiting&hellip;</div>
+        </div>
+      </div>
+      <div class="stage" data-stage="transport">
+        <div class="stage-dot"></div>
+        <div class="stage-body">
+          <div class="stage-name">[ TRANSPORT ] Chunked Streaming</div>
+          <div class="stage-detail">Waiting&hellip;</div>
+        </div>
+      </div>
+      <div class="stage" data-stage="integrity">
+        <div class="stage-dot"></div>
+        <div class="stage-body">
+          <div class="stage-name">[ INTEGRITY ] Pixel-Level Decode</div>
+          <div class="stage-detail">Waiting&hellip;</div>
+        </div>
+      </div>
+      <div class="stage" data-stage="qa">
+        <div class="stage-dot"></div>
+        <div class="stage-body">
+          <div class="stage-name">[ QA ] Aesthetic Scoring</div>
+          <div class="stage-detail">Waiting&hellip;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RIGHT: OUTPUT ================= -->
+  <section class="panel output">
+    <h2 class="panel-title">03 &mdash; Output Asset</h2>
+    <div class="canvas" id="canvas">
+      <div class="canvas-empty">No asset generated yet</div>
+    </div>
+    <div class="meta" id="meta"></div>
+  </section>
+
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
